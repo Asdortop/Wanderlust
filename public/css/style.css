@@ -1,0 +1,184 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body > .container {
+    flex: 1;
+}
+
+
+.navbar{
+    height: 4rem;
+}
+.nav-link{
+    color: #222 !important;
+}
+
+/* Footer section */
+.f-info {
+    text-align: center;
+    min-height: 6rem; /* reduced from 8rem */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    padding: 0.5rem 0;
+    border-top: 1px solid #ccc; /* optional: visual separation */
+}
+
+.f-info-socials,
+.f-info-brand,
+.f-info-links {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.2rem 0; /* smaller vertical gap between rows */
+}
+
+.f-info-socials i {
+    margin-right: 1.2rem;
+}
+
+.f-info-links a {
+    color: #222222;
+    text-decoration: none;
+    margin-right: 1.2rem;
+}
+
+.f-info-links a:hover {
+    color: #f70808;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    transition: all 0.5s ease-in-out;
+}
+
+.f-info-links{
+    margin-left: 0.7rem;
+}
+
+.f-info-socials{
+    margin: 1rem 0;
+}
+
+/*Cards*/
+.card {
+    border: none !important; 
+    margin: 3rem 0 2rem 0;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-text {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #222222;
+    text-decoration: none !important;
+}
+
+/* Remove underline from anchor tags wrapping cards */
+a.text-decoration-none {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+a.text-decoration-none:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* Remove underline from any <a> inside .card-text */
+.card-text a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* Optional: also remove underline on hover */
+.card-text a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    background-color: #fff;
+    opacity:0.2;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Form styles */  /*Edit Listing Form*/
+.form-control {
+    border-radius: 0.5rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem rgba(255, 60, 60, 0.1);
+    border: 1px solid #ccc;
+}
+.form-control:focus {
+    box-shadow: 0.1rem 0.1rem 0.1rem rgba(255, 60, 60, 0.2);
+    border-color: #f70808;
+}
+.btn-dark {
+    background-color: #f70808;
+    border-color: #f70808;
+    color: #fff;
+}
+
+.btn-dark:hover {
+    background-color: #d60000;
+    border-color: #d60000;
+}
+
+/*Show Page*/
+.show-img {
+    height: 30vh;
+}
+
+.btns {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-edit {
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    padding: 8px 30px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin: 0 13rem;
+    margin-right: 3.5rem;
+}
+
+.btn-edit:hover {
+    background-color: #ff3742;
+}
+
+.btn-delete {
+    background-color: #2f3542;
+    color: white;
+    border: none;
+    padding: 8px 30px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-delete:hover {
+    background-color: #1e2328;
+}
+

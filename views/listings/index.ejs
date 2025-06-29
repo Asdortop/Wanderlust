@@ -1,0 +1,25 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+<body>
+    <!-- <a href="/listings/new"><button type="button">Create New Listing</button></a> -->
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+        <% for(let listing of allListings){ %>
+            <a href="/listings/<%= listing._id %> " class="text-decoration-none text-dark">
+                <div class="card col" style="width: 20rem;">
+                <img src="<%= listing.image?.url || 'https://images.unsplash.com/photo-1625505826533-5c80aca7d157?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGdvYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60' %>" class="card-img-top" alt="listing_image" style="height: 20rem">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                    <p class="card-text">
+                    <b><%= listing.title %></b>
+                    <br>
+                    <i><%= listing.description %></i>
+                    <br>    
+                    Price: &#8377 <b><%= listing.price.toLocaleString("en-IN") %></b>
+                    </p>
+                </div>
+            </div>
+        </a>
+    <% } %>
+    </div>
+</body>
+
+
