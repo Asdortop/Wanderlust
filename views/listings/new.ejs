@@ -2,28 +2,34 @@
 <body>
     <div class="row ">
         <div class="col-8 offset-2">
-    <form method="POST" action="/listings">
+    <form method="POST" action="/listings" novalidate class="needs-validation">
         <h2>Create New Listing</h2>
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text" id="title" name="listing[title]" placeholder="Enter a catchy title" class="form-control" required>
+            <div class="valid-feedback">Title looks good!!!</div>
+            <div class="invalid-feedback">Enter a valid <title></title></div>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label" >Description:</label>
             <textarea id="description" name="listing[description]" placeholder="Describe about the place" class="form-control" required></textarea>
+            <div class="invalid-feedback">Please enter a short description<title></title></div>
         </div>       
         <div class="mb-3">
             <label for="price" class="form-label" >Price:</label>
             <input type="number" id="price" name="listing[price]" placeholder="Eg: 1500" class="form-control" required>
+            <div class="invalid-feedback">Please enter Valid Price<title></title></div>
         </div>
         <div class="row">
             <div class="mb-3 col-md-4">
                 <label for="location" class="form-label" >Location:</label>
                 <input type="text" id="location" name="listing[location]" placeholder="Eg: Hyderabad" class="form-control" required>
+                <div class="invalid-feedback">Please enter Valid Location<title></title></div>
             </div>
             <div class="mb-3 col-md-8">
                 <label for="country" class="form-label" >Country:</label>
                 <input type="text" id="country" name="listing[country]" placeholder="Eg: India" class="form-control" required>
+                <div class="invalid-feedback">Please enter Valid Country<title></title></div>
             </div>
         </div>
         <div class="mb-3">
