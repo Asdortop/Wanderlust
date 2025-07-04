@@ -65,7 +65,7 @@ body > .container {
 }
 
 /*Cards*/
-.card {
+.listing-card {
     border: none !important; 
     margin: 3rem 0 2rem 0;
 }
@@ -138,6 +138,19 @@ a.text-decoration-none:hover {
 /*Show Page*/
 .show-img {
     height: 30vh;
+}
+
+.name{
+    font-size: 2.1rem;
+    font-weight: 400;
+    color: #222222;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    margin-left: 0.5rem;
+}
+
+.card{
+    margin-top: 1.5rem;
 }
 
 .btns {
