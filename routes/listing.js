@@ -1,41 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
-const ExpressError = require("../utils/ExpressError.js");
-const {listingSchema, reviewSchema} = require("../schema.js");
 const Listing = require("../models/listing.js");
 const Review = require('../models/review.js');
-const {isLoggedIn} = require("../middleware.js");
-
-const validateListing = (req, res, next) => {
-    if (!req.body?.listing) {
-        throw new ExpressError("Listing data missing", 400);
-    }
-
-    let img = req.body.listing.image;
-
-    // Convert to object even if empty string
-    if (typeof img === 'string' && img.trim() !== "") {
-    req.body.listing.image = {
-        filename: "listingimage",
-        url: img.trim()
-    };
-} else {
-    delete req.body.listing.image; // Let EJS fallback work
-}
-
-
-    let { error } = listingSchema.validate(req.body);
-    console.log("Validation Result:", error);
-
-    if (error) {
-        let errDetails = error.details.map((el) => el.message).join(", ");
-        throw new ExpressError(errDetails, 400);
-    }
-
-    next();
-};
-
+const {isLoggedIn,isOwner,validateListing} = require("../middleware.js");
 
 
 //index route to show all listings
@@ -87,7 +55,7 @@ router.post("/",isLoggedIn, validateListing, wrapAsync(async (req,res) => {
 
 //Edit Route
 
-router.get("/:id/edit", isLoggedIn, wrapAsync(async (req,res) => {
+router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(async (req,res) => {
     let {id} = req.params;
     const listing = await Listing.findById(id);
     res.render("listings/edit.ejs", {listing});
@@ -96,7 +64,7 @@ router.get("/:id/edit", isLoggedIn, wrapAsync(async (req,res) => {
 
 // Update Route
 
-router.put("/:id", isLoggedIn, validateListing, wrapAsync(async (req,res) => {
+router.put("/:id", isLoggedIn,isOwner, validateListing, wrapAsync(async (req,res) => {
     if (!req.body.listing) {
         throw new ExpressError("Send valid data for listing", 400); // 400 Bad Request
     }
@@ -110,14 +78,13 @@ router.put("/:id", isLoggedIn, validateListing, wrapAsync(async (req,res) => {
             url: updateData.image
         };
     }
-    
     await Listing.findByIdAndUpdate(id, updateData);
     req.flash("success", "listing updated successfully!");
     res.redirect(`/listings/${id}`);
 }));
 
 // Delete Route
-router.delete("/:id", isLoggedIn, wrapAsync(async (req,res) => {
+router.delete("/:id", isLoggedIn,isOwner, wrapAsync(async (req,res) => {
     let {id} = req.params;
     const deletedListing = await Listing.findByIdAndDelete(id);
     console.log("Deleted Listing:\n", deletedListing);

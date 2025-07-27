@@ -5,18 +5,9 @@ const ExpressError = require('../utils/ExpressError.js');
 const { reviewSchema } = require('../schema.js');
 const Listing = require('../models/listing.js');
 const Review = require('../models/review.js');
+const { isLoggedIn, validateReview } = require('../middleware.js');
 
-const validateReview = (req, res, next) => {
-    let { error } = reviewSchema.validate(req.body);
-    console.log("Validation Result:", error);
 
-    if (error) {
-        let errDetails = error.details.map((el) => el.message).join(", ");
-        throw new ExpressError(errDetails, 400); // ✅ corrected order
-    } else {
-        next();
-    }
-};
 
 // Add Review Route
 // This route handles the submission of a new review for a specific listing

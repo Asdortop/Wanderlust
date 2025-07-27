@@ -17,7 +17,6 @@
             </div>
         </div>
         <div class="col-6 offset-2">
-            <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
                 <h3 class="text-center">Your Listing</h3>
             <div class="btns">
                 <a href="/listings/<%= listing._id %>/edit">
@@ -27,7 +26,6 @@
                     <button type="submit" class="btn-delete">Delete</button>
                 </form>
             </div>
-            <% } %>
         </div>
         <div class="col-6 offset-3">
             <hr>
